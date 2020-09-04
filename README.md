@@ -76,8 +76,8 @@ Distributed under the MIT license. See [License](https://vsouza.mit-license.org)
 
 [go-image]: https://img.shields.io/badge/Go--version-1.9-blue.svg
 [go-url]: https://golang.org/doc/go1.9
-[travis-image]: https://travis-ci.org/vsouza/go-gin-boilerplate.svg?branch=master
-[travis-url]: https://travis-ci.org/vsouza/go-gin-boilerplate
+[travis-image]: https://travis-ci.org/lng50k/booster-backend.svg?branch=master
+[travis-url]: https://travis-ci.org/lng50k/booster-backend
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-url]: https://vsouza.mit-license.org
 

@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/vsouza/go-gin-boilerplate/config"
-	"github.com/vsouza/go-gin-boilerplate/db"
-	"github.com/vsouza/go-gin-boilerplate/server"
+	"github.com/lng50k/booster-backend/config"
+	"github.com/lng50k/booster-backend/db"
+	"github.com/lng50k/booster-backend/server"
 )
 
 func main() {

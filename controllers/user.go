@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/vsouza/go-gin-boilerplate/models"
+	"github.com/lng50k/booster-backend/models"
 	"net/http"
 )
 

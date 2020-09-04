@@ -4,7 +4,7 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"github.com/vsouza/go-gin-boilerplate/config"
+	"github.com/lng50k/booster-backend/config"
 )
 
 func AuthMiddleware() gin.HandlerFunc {
