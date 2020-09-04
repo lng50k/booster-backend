@@ -16,7 +16,7 @@ func NewRouter() *gin.Engine {
 	router.GET("/health", health.Status)
 	router.Use(middlewares.AuthMiddleware())
 
-	v1 := router.Group("v1")
+	v1 := router.Group("api/v1")
 	{
 		userGroup := v1.Group("user")
 		{
