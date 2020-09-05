@@ -14,7 +14,8 @@ func NewRouter() *gin.Engine {
 	health := new(controllers.HealthController)
 
 	router.GET("/health", health.Status)
-	router.Use(middlewares.AuthMiddleware())
+	// router.Use(middlewares.AuthMiddleware())
+	router.Use(middlewares.CORSMiddleware())
 
 	v1 := router.Group("api/v1")
 	{
@@ -22,6 +23,12 @@ func NewRouter() *gin.Engine {
 		{
 			user := new(controllers.UserController)
 			userGroup.GET("/:id", user.Retrieve)
+		}
+
+		whmGroup := v1.Group("whm")
+		{
+			whm := new(controllers.WHMController)
+			whmGroup.GET("listaccounts", whm.RetrieveAll)
 		}
 	}
 	return router
