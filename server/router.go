@@ -25,10 +25,11 @@ func NewRouter() *gin.Engine {
 			userGroup.GET("/:id", user.Retrieve)
 		}
 
-		whmGroup := v1.Group("whm")
+		whmGroup := v1.Group("whm/account")
 		{
 			whm := new(controllers.WHMController)
-			whmGroup.GET("listaccounts", whm.RetrieveAll)
+			whmGroup.GET("list", whm.RetrieveAll)
+			whmGroup.POST("create", whm.Create)
 		}
 	}
 	return router
