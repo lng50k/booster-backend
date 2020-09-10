@@ -29,9 +29,10 @@ func NewRouter() *gin.Engine {
 		{
 			whm := new(controllers.WHMController)
 			whmGroup.GET("list", whm.RetrieveAll)
-			whmGroup.POST("create", whm.Create)
+			whmGroup.POST("", whm.Create)
+			whmGroup.DELETE(":username", whm.Delete)
 		}
+		
 	}
 	return router
-
 }

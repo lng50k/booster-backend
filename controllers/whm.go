@@ -17,7 +17,7 @@ type Account struct {
 }
 
 func (w WHMController) RetrieveAll(c *gin.Context) {
-	url := "https://gazri.net:2087/json-api/listaccts?api.version=1"
+	url := "listaccts?api.version=1"
 
 	data, err := doRequest(url, "Get")
 	if err != nil {
@@ -38,7 +38,7 @@ func (w WHMController) Create(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"status": "failed", "message": "Request Body is invalid!"})
 		return
 	}
-	url := "https://gazri.net:2087/json-api/createacct?api.version=1&username=" + account.Username + "&domain=" + account.Domain + "&bwlimit=unlimited&cgi=1&contactemail=info@gazri.com&cpmod=paper_lantern&password=" + account.Password
+	url := "createacct?api.version=1&username=" + account.Username + "&domain=" + account.Domain + "&bwlimit=unlimited&cgi=1&contactemail=info@gazri.com&cpmod=paper_lantern&password=" + account.Password
 
 	data, err := doRequest(url, "Post")
 
@@ -50,11 +50,31 @@ func (w WHMController) Create(c *gin.Context) {
 	var res interface{}
 	json.Unmarshal(data, &res)
 	fmt.Println(res)
-	c.JSON(http.StatusOK, gin.H{"message": "Successfully created"})
+	c.JSON(http.StatusOK, gin.H{"message": "Successfully Created"})
 	
 }
 
-func doRequest(url string, method string) ([]byte, error) {
+func (w WHMController) Delete(c *gin.Context) {
+	username := c.Params.ByName("username")
+	
+	url := "removeacct?user=" + username
+
+	data, err := doRequest(url, "Delete")
+
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"status": "failed", "message": "Unable to delete an account"})
+		return
+	}
+
+	var res interface{}
+	json.Unmarshal(data, &res)
+	fmt.Println(res)
+	c.JSON(http.StatusOK, gin.H{"message": "Successfully Deleted"})
+	
+}
+
+func doRequest(actionUrl string, method string) ([]byte, error) {
+	url := "https://gazri.net:2087/json-api/" + actionUrl
 	req, err := http.NewRequest(method, url, nil)
 
 	req.Header.Add("Authorization", "whm root:EKDILJAVOIC2A159GX3F027T79NWXVHP")
