@@ -4,7 +4,12 @@ VERSION=0.0.1
 .PHONY: build
 ## build: Compile the packages.
 build:
-	@env GOOS=linux go build -o $(NAME)
+	@go build -o $(NAME)
+
+.PHONY: build-prod
+## build: Compile the packages.
+build-prod:
+	@env GOOS=linux go build -o $(NAME)-prod
 
 .PHONY: run
 ## run: Build and Run in development mode.
